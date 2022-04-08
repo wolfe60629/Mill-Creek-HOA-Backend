@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>mill-creek-hoa</artifactId>
+    <artifactId>mill-creek-hoa-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mill-creek-hoa</name>
-    <description>Demo project for Spring Boot</description>
+    <name>mill-creek-backend</name>
+    <description>Spring Boot Backend For Mill Creek HOA</description>
     <properties>
         <java.version>11</java.version>
     </properties>
