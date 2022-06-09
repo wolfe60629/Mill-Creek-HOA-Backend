@@ -35,5 +35,13 @@ public class RequestDocumentService {
                     requestDocumentDto.getEditableColumns());
             return requestDocumentRepository.save(entity);
         }
+
+        public void deleteRequestDocument(RequestDocumentDto requestDocumentDto) {
+           RequestDocumentEntity entity = requestDocumentRepository.findByNameAndAndDescription(
+                   requestDocumentDto.getName(), requestDocumentDto.getDescription()
+           ).get(0);
+
+            requestDocumentRepository.deleteById(entity.getId());
+        }
     }
 

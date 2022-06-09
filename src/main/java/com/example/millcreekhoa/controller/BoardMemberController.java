@@ -1,11 +1,12 @@
 package com.example.millcreekhoa.controller;
 
+import com.example.millcreekhoa.data.BoardMemberDto;
 import com.example.millcreekhoa.data.DocumentDto;
+import com.example.millcreekhoa.entity.BoardMemberEntity;
 import com.example.millcreekhoa.entity.DocumentEntity;
+import com.example.millcreekhoa.service.BoardMemberService;
 import com.example.millcreekhoa.service.DocumentService;
-import com.jayway.jsonpath.JsonPath;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,18 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController()
-public class DocumentsController {
+public class BoardMemberController {
 
     @Autowired
-    DocumentService documentService;
+    BoardMemberService boardMemberService;
 
-   @PostMapping(value = "/documents/new")
-    public DocumentEntity addNewDownload(@RequestBody DocumentDto documentDto) {
-      return documentService.addNewDocument(documentDto);
+   @PostMapping(value = "/boardMembers/new")
+    public BoardMemberEntity addNewBoardMember(@RequestBody BoardMemberDto boardMemberDto) {
+      return boardMemberService.addNewBoardMember(boardMemberDto);
    }
 
-   @GetMapping(value = "/documents")
-    public List<DocumentEntity> getAllDownloads() {
-       return documentService.getAllDocuments();
+   @GetMapping(value = "/boardMembers")
+    public List<BoardMemberEntity> getAllBoardMembers() {
+       return boardMemberService.getAllBoardMembers();
    }
 }

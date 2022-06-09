@@ -2,31 +2,31 @@ package com.example.millcreekhoa.service;
 
 import com.example.millcreekhoa.data.DocumentDto;
 import com.example.millcreekhoa.entity.DocumentEntity;
+import com.example.millcreekhoa.entity.NewsletterEntity;
 import com.example.millcreekhoa.repo.DocumentRepository;
+import com.example.millcreekhoa.repo.NewsletterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
-public class DocumentService {
+public class NewsletterService {
 
     @Autowired
-    DocumentRepository documentRepository;
+    NewsletterRepository newsletterRepository;
 
-    public List<DocumentEntity> getAllDocuments() {
-        return documentRepository.findAll();
+    public List<NewsletterEntity> getAllNewsletters() {
+        return newsletterRepository.findAll();
     }
 
-    public DocumentEntity getDocumentById(int id) {
-        return documentRepository.findAllById(id);
+    public NewsletterEntity getNewsletterById(int id) {
+        return newsletterRepository.findAllById(id);
     }
 
-    public DocumentEntity addNewDocument(DocumentDto documentDto) {
-            DocumentEntity entity = new DocumentEntity(documentDto.getName(),documentDto.getFriendlyName(),documentDto.getDescription(),documentDto.getCategory(), documentDto.getItem());
-            return documentRepository.save(entity);
+    public NewsletterEntity addNewNewsletter(DocumentDto documentDto) {
+            NewsletterEntity entity = new NewsletterEntity(documentDto.getName(),documentDto.getFriendlyName(),documentDto.getDescription(),documentDto.getCategory(), documentDto.getItem());
+            return newsletterRepository.save(entity);
         }
     }
 

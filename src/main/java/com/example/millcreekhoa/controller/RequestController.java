@@ -28,4 +28,10 @@ public class RequestController {
     public List<RequestDocumentEntity> getAllDownloads() {
         return requestDocumentService.getAllRequests();
     }
+
+
+    @PostMapping(value = "/requests/delete")
+    public void deleteRequest(@RequestBody RequestDocumentDto requestDocumentDto) {
+         requestDocumentService.deleteRequestDocument(requestDocumentDto);
+    }
 }

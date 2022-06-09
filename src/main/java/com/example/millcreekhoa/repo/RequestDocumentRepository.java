@@ -14,4 +14,7 @@ public interface RequestDocumentRepository extends JpaRepository<RequestDocument
     RequestDocumentEntity findAllById(Integer id);
 
     List<RequestDocumentEntity> findByNameAndAndDescription(String name, String description);
+
+    @Override
+    void deleteById(Integer integer);
 }

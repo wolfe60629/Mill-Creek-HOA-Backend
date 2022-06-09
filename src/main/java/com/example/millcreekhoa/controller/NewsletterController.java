@@ -2,10 +2,10 @@ package com.example.millcreekhoa.controller;
 
 import com.example.millcreekhoa.data.DocumentDto;
 import com.example.millcreekhoa.entity.DocumentEntity;
+import com.example.millcreekhoa.entity.NewsletterEntity;
 import com.example.millcreekhoa.service.DocumentService;
-import com.jayway.jsonpath.JsonPath;
+import com.example.millcreekhoa.service.NewsletterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController()
-public class DocumentsController {
+public class NewsletterController {
 
     @Autowired
-    DocumentService documentService;
+    NewsletterService newsletterService;
 
-   @PostMapping(value = "/documents/new")
-    public DocumentEntity addNewDownload(@RequestBody DocumentDto documentDto) {
-      return documentService.addNewDocument(documentDto);
+   @PostMapping(value = "/newsletters/new")
+    public NewsletterEntity addNewNewsletter(@RequestBody DocumentDto documentDto) {
+      return newsletterService.addNewNewsletter(documentDto);
    }
 
-   @GetMapping(value = "/documents")
-    public List<DocumentEntity> getAllDownloads() {
-       return documentService.getAllDocuments();
+   @GetMapping(value = "/newsletters")
+    public List<NewsletterEntity> getAllNewsletters() {
+       return newsletterService.getAllNewsletters();
    }
 }

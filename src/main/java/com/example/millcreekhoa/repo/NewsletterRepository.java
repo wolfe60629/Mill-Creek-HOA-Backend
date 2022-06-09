@@ -1,18 +1,17 @@
 package com.example.millcreekhoa.repo;
 
 import com.example.millcreekhoa.entity.DocumentEntity;
+import com.example.millcreekhoa.entity.NewsletterEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface DocumentRepository extends JpaRepository<DocumentEntity, Integer> {
-    List<DocumentEntity> findAll();
+public interface NewsletterRepository extends JpaRepository<NewsletterEntity, Integer> {
+    List<NewsletterEntity> findAll();
 
-    DocumentEntity findAllById(Integer id);
+    NewsletterEntity findAllById(Integer id);
 
-    List<DocumentEntity> findByNameAndAndDescription(String name, String description);
+    List<NewsletterEntity> findByNameAndAndDescription(String name, String description);
 }

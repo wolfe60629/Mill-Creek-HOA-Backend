@@ -1,44 +1,47 @@
 package com.example.millcreekhoa.entity;
 
 import com.example.millcreekhoa.data.BoardMemberDto;
+import com.example.millcreekhoa.data.EventDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "board_member")
-public class BoardMemberEntity {
+@Table(name = "event")
+public class EventEntity {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @Column(name="name", nullable = false)
-    String name;
+    @Column(name="event_name", nullable = false)
+    String eventName;
 
-    @Column(name = "email", nullable = false)
-    String email;
+    @Column(name = "description", nullable = true)
+    String description;
 
-    @Column(name = "title", nullable=false)
-    String title;
+    @Column(name = "location", nullable = true)
+    String location;
 
-    public BoardMemberEntity(String name, String email, String title) {
-        this.name = name;
-        this.email = email;
-        this.title = title;
-    }
+    @Column(name = "date", columnDefinition = "TIMESTAMP", nullable = false)
+    private LocalDateTime date;
 
-    public BoardMemberEntity(BoardMemberDto boardMemberDto) {
-        this.name = boardMemberDto.getName();
-        this.email = boardMemberDto.getEmail();
-        this.title = boardMemberDto.getTitle();
+    public EventEntity(EventDto eventDto) {
+        this.id = eventDto.getId();
+        this.eventName = eventDto.getEventName();
+        this.description = eventDto.getDescription();
+        this.date = eventDto.getDate();
+        this.location = eventDto.getLocation();
+
     }
 }
 

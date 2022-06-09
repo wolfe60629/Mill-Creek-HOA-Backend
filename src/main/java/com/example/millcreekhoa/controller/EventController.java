@@ -1,11 +1,8 @@
 package com.example.millcreekhoa.controller;
 
-import com.example.millcreekhoa.data.BoardMemberDto;
-import com.example.millcreekhoa.data.DocumentDto;
-import com.example.millcreekhoa.entity.BoardMemberEntity;
-import com.example.millcreekhoa.entity.DocumentEntity;
-import com.example.millcreekhoa.service.BoardMemberService;
-import com.example.millcreekhoa.service.DocumentService;
+import com.example.millcreekhoa.data.EventDto;
+import com.example.millcreekhoa.entity.EventEntity;
+import com.example.millcreekhoa.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,18 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController()
-public class BoardMemberController {
+public class EventController {
 
     @Autowired
-    BoardMemberService boardMemberService;
+    EventService eventService;
 
-   @PostMapping(value = "/boardMembers/new")
-    public BoardMemberEntity addNewBoardMember(@RequestBody BoardMemberDto boardMemberDto) {
-      return boardMemberService.addNewBoardMember(boardMemberDto);
+   @PostMapping(value = "/events/new")
+    public EventEntity addNewEvent(@RequestBody EventDto eventDto) {
+      return eventService.addNewEvent(eventDto);
    }
 
-   @GetMapping(value = "/boardMembers")
-    public List<BoardMemberEntity> getAllBoardMembers() {
-       return boardMemberService.getAllBoardMembers();
+    @PostMapping(value = "/events/delete")
+    public boolean deleteEvent(@RequestBody EventDto eventDto) {
+        return eventService.deleteEvent(eventDto);
+    }
+
+
+   @GetMapping(value = "/events")
+    public List<EventEntity> getAllFutureEvents() {
+       return eventService.getAllFutureEvents();
    }
 }

@@ -1,10 +1,10 @@
 package com.example.millcreekhoa.entity;
 
+import com.example.millcreekhoa.data.BoardMemberDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
-
 
 import javax.persistence.*;
 
@@ -13,36 +13,32 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "document")
-public class DocumentEntity {
+@Table(name = "board_member")
+public class BoardMemberEntity {
     @Column(name="id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @Column(name="name")
+    @Column(name="name", nullable = false)
     String name;
 
-    @Column(name="friendly_name")
-    String friendlyName;
+    @Column(name = "email", nullable = false)
+    String email;
 
-    @Column(name = "description")
-    String description;
+    @Column(name = "title", nullable=false)
+    String title;
 
-    @Lob
-    @Type(type = "org.hibernate.type.TextType")
-    @Column(name = "item", columnDefinition = "TEXT", nullable = false)
-    String item;
-
-    @Column(name="category")
-    String category;
-
-    public DocumentEntity(String name, String friendlyName, String description, String category, String item) {
+    public BoardMemberEntity(String name, String email, String title) {
         this.name = name;
-        this.friendlyName = friendlyName;
-        this.description = description;
-        this.category = category;
-        this.item = item;
+        this.email = email;
+        this.title = title;
+    }
+
+    public BoardMemberEntity(BoardMemberDto boardMemberDto) {
+        this.name = boardMemberDto.getName();
+        this.email = boardMemberDto.getEmail();
+        this.title = boardMemberDto.getTitle();
     }
 }
 
