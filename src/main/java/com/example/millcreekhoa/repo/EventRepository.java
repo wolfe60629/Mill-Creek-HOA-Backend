@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface EventRepository extends JpaRepository<EventEntity, Integer> {
-    List<EventEntity> findAllByOrderByDateAsc();
+    List<EventEntity> findAllByOrderByStartDateAsc();
     EventEntity findAllById(Integer id);
 
 }

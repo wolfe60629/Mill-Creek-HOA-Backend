@@ -18,7 +18,7 @@ public class BoardMemberService {
     BoardMemberRepository boardMemberRepository;
 
     public List<BoardMemberEntity> getAllBoardMembers() {
-        return boardMemberRepository.findAll();
+        return boardMemberRepository.findAllByOrderByIdAsc();
     }
 
     public BoardMemberEntity getBoardMemberById(int id) {

@@ -32,14 +32,18 @@ public class EventEntity {
     @Column(name = "location", nullable = true)
     String location;
 
-    @Column(name = "date", columnDefinition = "TIMESTAMP", nullable = false)
-    private LocalDateTime date;
+    @Column(name = "start_date", columnDefinition = "TIMESTAMP", nullable = false)
+    private LocalDateTime startDate;
+
+    @Column(name = "end_date", columnDefinition = "TIMESTAMP", nullable = true)
+    private LocalDateTime endDate;
 
     public EventEntity(EventDto eventDto) {
         this.id = eventDto.getId();
         this.eventName = eventDto.getEventName();
         this.description = eventDto.getDescription();
-        this.date = eventDto.getDate();
+        this.startDate = eventDto.getStartDate();
+        this.endDate = eventDto.getEndDate();
         this.location = eventDto.getLocation();
 
     }

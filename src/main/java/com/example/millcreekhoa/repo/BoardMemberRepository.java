@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface BoardMemberRepository extends JpaRepository<BoardMemberEntity, Integer> {
-    List<BoardMemberEntity> findAll();
+    List<BoardMemberEntity> findAllByOrderByIdAsc();
     BoardMemberEntity findAllById(Integer id);
 }
