@@ -10,6 +10,8 @@ import java.util.List;
 
 @Repository
 public interface DocumentRepository extends JpaRepository<DocumentEntity, Integer> {
+
+    @Query(value = "select id,category,friendly_name,name,description,'' as item from request", nativeQuery = true)
     List<DocumentEntity> findAll();
 
     DocumentEntity findAllById(Integer id);
