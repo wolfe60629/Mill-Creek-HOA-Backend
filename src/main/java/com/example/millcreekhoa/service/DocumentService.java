@@ -17,7 +17,11 @@ public class DocumentService {
     DocumentRepository documentRepository;
 
     public List<DocumentEntity> getAllDocuments() {
-        return documentRepository.findAll();
+        // Grab all documents minus the actual item due to space and time
+        return documentRepository.findAll().stream().map(document -> {
+            document.setItem("");
+            return document;
+        }).collect(Collectors.toList());
     }
 
     public DocumentEntity getDocumentById(int id) {

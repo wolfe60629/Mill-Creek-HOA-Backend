@@ -28,8 +28,6 @@ public class EventService {
         // Pull all events
         List<EventEntity> allEvents = eventRepository.findAllByOrderByStartDateAsc();
 
-
-
         //only show events in future
         LocalDateTime presentDate = LocalDateTime.now();
         List<EventEntity> futureEvents = allEvents.stream().filter((event) -> {

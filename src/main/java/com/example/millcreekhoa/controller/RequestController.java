@@ -7,10 +7,7 @@ import com.example.millcreekhoa.entity.RequestDocumentEntity;
 import com.example.millcreekhoa.service.DocumentService;
 import com.example.millcreekhoa.service.RequestDocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +26,10 @@ public class RequestController {
         return requestDocumentService.getAllRequests();
     }
 
+    @GetMapping(value = "/requests/{id}")
+    RequestDocumentEntity getRequestById(@PathVariable Integer id) {
+        return requestDocumentService.getRequestById(id);
+    }
 
     @PostMapping(value = "/requests/delete")
     public void deleteRequest(@RequestBody RequestDocumentDto requestDocumentDto) {

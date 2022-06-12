@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RequestDocumentService {
@@ -18,7 +19,11 @@ public class RequestDocumentService {
     RequestDocumentRepository requestDocumentRepository;
 
     public List<RequestDocumentEntity> getAllRequests() {
-        return requestDocumentRepository.findAll();
+        // Return all items except for the document itself for performance
+        return requestDocumentRepository.findAll().stream().map((requestDocumentEntity -> {
+            requestDocumentEntity.setItem("");
+            return requestDocumentEntity;
+        })).collect(Collectors.toList());
     }
 
     public RequestDocumentEntity getRequestById(int id) {
