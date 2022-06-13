@@ -36,6 +36,7 @@ public class BoardMemberEntity {
     }
 
     public BoardMemberEntity(BoardMemberDto boardMemberDto) {
+        this.id = boardMemberDto.getId();
         this.name = boardMemberDto.getName();
         this.email = boardMemberDto.getEmail();
         this.title = boardMemberDto.getTitle();
