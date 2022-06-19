@@ -40,7 +40,7 @@ public class NewsletterEntity {
     String category;
 
     @Column(name = "crt_ts", columnDefinition = "TIMESTAMP", nullable = false)
-    private Date crt_ts;
+    private Date createTimestamp;
 
     public NewsletterEntity(String name, String friendlyName, String description, String category, String item) {
         this.name = name;
@@ -48,7 +48,7 @@ public class NewsletterEntity {
         this.description = description;
         this.category = category;
         this.item = item;
-        this.crt_ts = new Date();
+        this.createTimestamp = new Date();
     }
 }
 

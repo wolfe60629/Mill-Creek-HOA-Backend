@@ -17,7 +17,7 @@ public class NewsletterService {
     NewsletterRepository newsletterRepository;
 
     public List<NewsletterEntity> getAllNewsletters() {
-        return newsletterRepository.findAll();
+        return newsletterRepository.findAllByOrderByCreateTimestampDesc();
     }
 
     public NewsletterEntity getNewsletterById(int id) {

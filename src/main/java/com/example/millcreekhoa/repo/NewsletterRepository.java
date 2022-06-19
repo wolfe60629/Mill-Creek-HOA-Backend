@@ -9,7 +9,9 @@ import java.util.List;
 
 @Repository
 public interface NewsletterRepository extends JpaRepository<NewsletterEntity, Integer> {
-    List<NewsletterEntity> findAll();
+    List<NewsletterEntity> findAllByOrderByCreateTimestampDesc();
+
+
 
     NewsletterEntity findAllById(Integer id);
 
