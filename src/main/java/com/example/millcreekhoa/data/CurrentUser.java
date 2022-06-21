@@ -1,5 +1,6 @@
 package com.example.millcreekhoa.data;
 
+import com.example.millcreekhoa.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -55,5 +56,10 @@ public class CurrentUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public CurrentUser(UserEntity userEntity) {
+        this.username = userEntity.getUsername();
+        this.password = userEntity.getPassword();
     }
 }
