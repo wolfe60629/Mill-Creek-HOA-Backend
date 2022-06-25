@@ -30,4 +30,9 @@ public class DocumentsController {
    DocumentEntity getDocumentById(@PathVariable Integer id) {
        return documentService.getDocumentById(id);
    }
+
+    @PostMapping(value = "/documents/delete")
+    public void deleteRequest(@RequestBody DocumentDto documentDto) {
+        documentService.deleteDocument(documentDto);
+    }
 }
