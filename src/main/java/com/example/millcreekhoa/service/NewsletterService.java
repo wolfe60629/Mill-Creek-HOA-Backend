@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NewsletterService {
@@ -17,7 +18,11 @@ public class NewsletterService {
     NewsletterRepository newsletterRepository;
 
     public List<NewsletterEntity> getAllNewsletters() {
-        return newsletterRepository.findAllByOrderByCreateTimestampDesc();
+        // Grab all documents minus the actual item due to space and time
+        return newsletterRepository.findAllByOrderByCreateTimestampDesc().stream().map((document) -> {
+            document.setItem("");
+            return document;
+        }).collect(Collectors.toList());
     }
 
     public NewsletterEntity getNewsletterById(int id) {

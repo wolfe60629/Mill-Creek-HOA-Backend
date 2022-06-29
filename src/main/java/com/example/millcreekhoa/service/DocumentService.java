@@ -32,5 +32,14 @@ public class DocumentService {
             DocumentEntity entity = new DocumentEntity(documentDto.getName(),documentDto.getFriendlyName(),documentDto.getDescription(),documentDto.getCategory(), documentDto.getItem());
             return documentRepository.save(entity);
         }
+
+    public void deleteDocument(DocumentDto documentDto) {
+        DocumentEntity entity = documentRepository.findByNameAndAndDescription(
+                documentDto.getName(), documentDto.getDescription()
+        ).get(0);
+
+        documentRepository.deleteById(entity.getId());
+    }
+
     }
 
