@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Base64;
 import java.util.Properties;
@@ -52,7 +53,7 @@ public class EmailService {
 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        helper.setTo(email.getEmail());
+        helper.setTo(InternetAddress.parse(email.getEmail()));
         helper.setText(email.getMessage());
         byte[] doc = Base64.getDecoder().decode(email.getBase64());
 
