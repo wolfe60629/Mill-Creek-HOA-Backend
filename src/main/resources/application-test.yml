@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mill_creek_test
+    username: ${database_username}
+    password: ${database_password}
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        ddl-auto: update
+        jdbc:
+          time_zone: UTC
+server:
+  port: 9650
