@@ -11,3 +11,12 @@ spring:
         ddl-auto: update
         jdbc:
           time_zone: UTC
+server:
+  port: 9651
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: keystore/baeldung.p12
+    key-store-password: ${keystorePassword}
+    key-alias: baeldung
+    key-password: ${keystorePassword}
