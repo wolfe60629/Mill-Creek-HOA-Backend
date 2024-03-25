@@ -12,4 +12,4 @@ spring:
         jdbc:
           time_zone: UTC
 server:
-  port: 9651
+  port: 9650
