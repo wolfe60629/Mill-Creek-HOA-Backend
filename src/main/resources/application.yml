@@ -1,6 +1,8 @@
 spring:
+  profiles:
+    active: ${active_profile}
   datasource:
-    url: jdbc:postgresql://localhost:5432/MillCreek
+    url: ${database_url}
     username: ${database_username}
     password: ${database_password}
   jpa:

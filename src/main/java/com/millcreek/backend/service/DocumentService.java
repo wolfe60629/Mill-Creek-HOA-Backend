@@ -1,0 +1,44 @@
+package com.millcreek.backend.service;
+
+import com.millcreek.backend.entity.DocumentEntity;
+import com.millcreek.backend.repo.DocumentRepository;
+import com.millcreek.backend.data.DocumentDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Service
+public class DocumentService {
+
+    @Autowired
+    DocumentRepository documentRepository;
+
+    public List<DocumentEntity> getAllDocuments() {
+        // Grab all documents minus the actual item due to space and time
+        return documentRepository.findAll().stream().map(document -> {
+            document.setItem("");
+            return document;
+        }).collect(Collectors.toList());
+    }
+
+    public DocumentEntity getDocumentById(int id) {
+        return documentRepository.findAllById(id);
+    }
+
+    public DocumentEntity addNewDocument(DocumentDto documentDto) {
+            DocumentEntity entity = new DocumentEntity(documentDto.getName(),documentDto.getFriendlyName(),documentDto.getDescription(),documentDto.getCategory(), documentDto.getItem());
+            return documentRepository.save(entity);
+        }
+
+    public void deleteDocument(DocumentDto documentDto) {
+        DocumentEntity entity = documentRepository.findByNameAndAndDescription(
+                documentDto.getName(), documentDto.getDescription()
+        ).get(0);
+
+        documentRepository.deleteById(entity.getId());
+    }
+
+    }
+
